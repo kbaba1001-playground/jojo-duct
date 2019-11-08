@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    image: postgres:12.0
+    ports:
+      - "2345:5432"
+    volumes:
+      - ./db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+  testdb:
+    image: postgres:12.0
+    ports:
+      - "2346:5432"
+    volumes:
+      - ./db/migration.sql:/docker-entrypoint-initdb.d/migration.sql
